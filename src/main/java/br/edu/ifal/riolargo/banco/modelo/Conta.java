@@ -22,23 +22,18 @@ public class Conta {
 	
 	private String numero;
 	
-	
-	
 	@OneToMany(
 			mappedBy="conta",
 			cascade = CascadeType.ALL,
 			orphanRemoval = true
 			)
 	private List<Transacao> transacoes = new ArrayList<>();
-	
-	
-	
-	
-	
-	
-	
+
 	@ManyToMany( mappedBy="contas" )
 	private List<Cliente> clientes = new ArrayList<>();
+	
+	@OneToMany( mappedBy="conta" )
+	private List<Cartao> cartoes = new ArrayList<>();
 	
 	public List<Cliente> getClientes() {
 		return clientes;
@@ -69,6 +64,12 @@ public class Conta {
 	}
 	public void setTransacoes(List<Transacao> transacoes) {
 		this.transacoes = transacoes;
+	}
+	public List<Cartao> getCartoes() {
+		return cartoes;
+	}
+	public void setCartoes(List<Cartao> cartoes) {
+		this.cartoes = cartoes;
 	}
 	
 }

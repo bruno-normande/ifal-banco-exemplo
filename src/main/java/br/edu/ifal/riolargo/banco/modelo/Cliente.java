@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -28,6 +29,16 @@ public class Cliente {
 	@ManyToMany
 	private List<Conta> contas = new ArrayList<>();
 	
+	@OneToMany( mappedBy="cliente" )
+	private List<Cartao> cartoes = new ArrayList<>();
+	
+	public List<Cartao> getCartoes() {
+		return cartoes;
+	}
+
+	public void setCartoes(List<Cartao> cartoes) {
+		this.cartoes = cartoes;
+	}
 
 	public List<Conta> getContas() {
 		return contas;
@@ -35,6 +46,10 @@ public class Cliente {
 
 	public void setContas(List<Conta> contas) {
 		this.contas = contas;
+	}
+	
+	public void addConta(Conta conta) {
+		this.contas.add(conta);
 	}
 
 	public Endereco getEnd() {
