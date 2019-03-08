@@ -1,5 +1,6 @@
 package br.edu.ifal.riolargo.banco.modelo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,8 +14,10 @@ public class Cartao {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(nullable=false, unique=true)
 	private String numero;
 	
+	@Column(nullable=false)
 	private String validade;
 	
 	private Double limite;
